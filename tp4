@@ -1,0 +1,34 @@
+xmllint notes.xml --noout --xpath "count(notes/note)"
+
+xmllint notes.xml --noout --xpath "/notes/note[1]/title"
+
+xmllint notes.xml --noout --xpath "/notes/note[last()]/from"
+
+xmllint notes.xml --noout --xpath "//note[@color='pink']/from"
+
+xmllint notes.xml --noout --xpath "//note[starts-with(@date,\"2018\")]/title"
+
+xmllint notes.xml --noout --xpath "/notes/note[from='Bob'][3]/message"
+
+xmllint notes.xml --noout --xpath "//note[contains(title, \"Pas\")]/title"
+ou
+xmllint notes.xml --noout --xpath "//note/title[contains(., \"Pas\")]"
+
+xmllint notes.xml --noout --xpath "//note[read=\"\"]/title"
+
+xmllint notes.xml --noout --xpath "//note[from=\"Alice\" and to=\"Bob\" or from=\"Bob\" and to=\"Alice\"]/title"
+
+xmllint notes.xml --noout --xpath "//note[from=\"Bob\" and to=\"Alice\"]/title"
+
+- - - - - -
+POKEDEX
+- - - - - -
+
+Size > 2m
+xmllint pokedex.xml --noout --xpath "//pokemon[sizes/size[@unit='meter'] > 2.0]/name"
+
+Avant Rattata
+xmllint pokedex.xml --noout --xpath "//pokemon[name='Rattata']/preceding-sibling:pokemon[1]/name"
+
+Somme meters
+xmllint pokedex.xml --noout --xpath "sum(//pokemon/sizes/size[@unit='meter']"
